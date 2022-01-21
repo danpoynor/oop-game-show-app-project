@@ -16,7 +16,30 @@ class Game {
       new Phrase('I am a developer'),
       new Phrase('I am a ninja'),
       new Phrase('I am a programmer'),
-      new Phrase('I am a ninja warrior')
+      new Phrase('I am a ninja warrior'),
+      new Phrase('Walking On Sunshine'),
+      new Phrase('May the Force be with you'),
+      new Phrase('Needle In a Haystack'),
+      new Phrase('Shot In The Dark'),
+      new Phrase('Easy As Pie'),
+      new Phrase('Count Me In'),
+      new Phrase('Make it work'),
+      new Phrase('Solve the problem'),
+      new Phrase('Keep it simple'),
+      new Phrase('More than meets the eye'),
+      new Phrase('A head full of waffles'),
+      new Phrase('The best of both worlds'),
+      new Phrase('Pancakes are the best'),
+      new Phrase('Live long and prosper'),
+      new Phrase('Lucky for you'),
+      new Phrase('You are what you eat'),
+      new Phrase('Fasten your seat belt'),
+      new Phrase('Wash your hands'),
+      new Phrase('Wear a mask'),
+      new Phrase('Be careful'),
+      new Phrase('Play to win'),
+      new Phrase('Keep smiling'),
+      new Phrase('Dreams come true')
     ];
     this.activePhrase = this.getRandomPhrase();
   }
