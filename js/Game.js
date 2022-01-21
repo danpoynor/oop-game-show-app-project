@@ -56,6 +56,9 @@ class Game {
 
     // Get all the letters in the added phrase
     this.letters = document.querySelectorAll('#phrase li');
+
+    // Set game status so events can be disregarded after game ends
+    this.isPlaying = true;
   }
 
   /**
@@ -97,7 +100,8 @@ class Game {
    * @param {boolean} isWinner - Boolean value indicating whether the game has been won (true) or not (false)
    */
   gameOver(isWinner) {
-    // Update overlay <h2> with a win or loss message and add either 'win' or 'lose' class.
+    this.isPlaying = false;
+
     const gameOverMessage = document.createElement('h2');
     if (isWinner) {
       gameOverMessage.textContent = 'You won!';
@@ -141,6 +145,7 @@ class Game {
    * @param {object} ev Event object
    */
   handleInteraction(ev) {
+    if (this.isPlaying) {
     let target = null;
     let char = '';
 
@@ -158,9 +163,9 @@ class Game {
       target = document.querySelector(`button[data-key="${ev.key}"]`);
       char = ev.key;
     }
+
     if (target) {
       target.disabled = true;
-    }
 
     /**
      * Check if the pressed key is a letter in the phrase
@@ -172,9 +177,7 @@ class Game {
        * Show the letter on the board
        * Check if the player has won
        */
-      if (target) {
         target.classList.add('chosen');
-      }
       this.activePhrase.showMatchedLetter(char);
 
       if (this.checkForWin()) {
@@ -190,6 +193,8 @@ class Game {
       if (target && !target.classList.contains('wrong')) {
         target.classList.add('wrong');
         this.removeLife();
+          }
+        }
       }
     }
   }
