@@ -102,6 +102,9 @@ class Game {
   gameOver(isWinner) {
     this.isPlaying = false;
 
+    /**
+     * Create <h2> element with a win or loss message and insert after <h1> element
+     */
     const gameOverMessage = document.createElement('h2');
     if (isWinner) {
       gameOverMessage.textContent = 'You won!';
@@ -111,6 +114,7 @@ class Game {
       this.header.className = 'lose';
     }
     document.getElementsByTagName('h1')[0].insertAdjacentElement('afterend', gameOverMessage);
+
     this.resetGame();
   }
 
@@ -146,53 +150,53 @@ class Game {
    */
   handleInteraction(ev) {
     if (this.isPlaying) {
-    let target = null;
-    let char = '';
+      let target = null;
+      let char = '';
 
-    /**
-     * Test if ev is a button click or keyboard press
-     */
-    if (ev.type === 'click') {
-      target = ev.target;
-      char = target.textContent;
-    } else if (ev.type === 'keydown') {
       /**
-       * Event type is keydown
-       * Target the onscreen keyboard button representing the pressed key
+       * Test if ev is a button click or keyboard press
        */
-      target = document.querySelector(`button[data-key="${ev.key}"]`);
-      char = ev.key;
-    }
-
-    if (target) {
-      target.disabled = true;
-
-    /**
-     * Check if the pressed key is a letter in the phrase
-     */
-    if (this.activePhrase.checkLetter(char)) {
-      /**
-       * The pressed key is a letter in the phrase
-       *
-       * Show the letter on the board
-       * Check if the player has won
-       */
-        target.classList.add('chosen');
-      this.activePhrase.showMatchedLetter(char);
-
-      if (this.checkForWin()) {
-        this.gameOver(true);
+      if (ev.type === 'click') {
+        target = ev.target;
+        char = target.textContent;
+      } else if (ev.type === 'keydown') {
+        /**
+         * Event type is keydown
+         * Target the onscreen keyboard button representing the pressed key
+         */
+        target = document.querySelector(`button[data-key="${ev.key}"]`);
+        char = ev.key;
       }
-    } else {
-      /**
-       * The pressed key is not a letter in the phrase
-       *
-       * In case a pressed keyboard key was previously selected,
-       * don't remove a life again from the scoreboard
-       */
-      if (target && !target.classList.contains('wrong')) {
-        target.classList.add('wrong');
-        this.removeLife();
+
+      if (target) {
+        target.disabled = true;
+
+        /**
+         * Check if the pressed key is a letter in the phrase
+         */
+        if (this.activePhrase.checkLetter(char)) {
+          /**
+           * The pressed key is a letter in the phrase
+           *
+           * Show the letter on the board
+           * Check if the player has won
+           */
+          target.classList.add('chosen');
+          this.activePhrase.showMatchedLetter(char);
+
+          if (this.checkForWin()) {
+            this.gameOver(true);
+          }
+        } else {
+          /**
+           * The pressed key is not a letter in the phrase
+           *
+           * In case a pressed keyboard key was previously selected,
+           * don't remove a life again from the scoreboard
+           */
+          if (target && !target.classList.contains('wrong')) {
+            target.classList.add('wrong');
+            this.removeLife();
           }
         }
       }
