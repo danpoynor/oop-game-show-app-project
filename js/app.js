@@ -6,10 +6,10 @@
 document.addEventListener('click', ev => {
   if (ev.target.tagName === 'BUTTON') {
     if (ev.target.id === 'btn-reset') {
-      let game = new Game();
-      game.startGame();
+      window.game = new Game();
+      window.game.startGame();
     } else {
-      game.handleInteraction(ev);
+      window.game.handleInteraction(ev);
     }
   }
 });
@@ -22,7 +22,7 @@ document.addEventListener('click', ev => {
 let isKeyDown = false;
 document.addEventListener('keydown', ev => {
   if (isKeyDown === false && !ev.altKey && !ev.ctrlKey && !ev.metaKey && /[a-zA-Z]/.test(ev.key) && ev.key.length === 1) {
-    game.handleInteraction(ev);
+    window.game.handleInteraction(ev);
     isKeyDown = true;
   }
 });
