@@ -120,7 +120,9 @@ class Phrase {
 ## POTENTIAL TODOs
 
 - Make UX/UI mobile friendly.
-- Add more phrases to the game. Maybe use a data source.
+- When game ends, animate phrase letters for a second before resetting.
+- Maybe show solution if player loses so they can win next time.
+- Maybe use an API source for quote data.
 - Improve Score area with better hearts and score counting.
 - Add more help or descriptions text based on game status.
 - Add more animations.
