@@ -1,5 +1,3 @@
-let game = new Game();
-
 /**
  * Listen for <button> element clicks (start button and onscreen keyboard buttons)
  *
@@ -8,6 +6,7 @@ let game = new Game();
 document.addEventListener('click', ev => {
   if (ev.target.tagName === 'BUTTON') {
     if (ev.target.id === 'btn-reset') {
+      let game = new Game();
       game.startGame();
     } else {
       game.handleInteraction(ev);
