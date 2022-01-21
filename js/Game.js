@@ -1,15 +1,15 @@
 /**
+ * Create an instance of the game
  * @class Game
  * @classdesc The main game class.
  */
 class Game {
-  /**
-   * @constructor
-   * @param {string} missed - The HTML element that is used to display the number of missed guesses
-   * @param {Array.<string>} phrases - Array of phrases that can be used in the game
-   * @param {string} activePhrase - The active phrase that is being used by the game
-   */
   constructor() {
+    /**
+     * @param {string} missed - The HTML element that is used to display the number of missed guesses
+     * @param {Array.<string>} phrases - Array of phrases that can be used in the game
+     * @param {string} activePhrase - The active phrase that is being used by the game
+     */
     this.missed = 0;
     this.phrases = [
       new Phrase('Hello World'),
