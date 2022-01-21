@@ -11,15 +11,14 @@ class Game {
    */
   constructor() {
     this.missed = 0;
-    // Create array of objects with phrases and their corresponding hint
     this.phrases = [
-      { phrase: 'Hello World' },
-      { phrase: 'I am a developer' },
-      { phrase: 'I am a ninja' },
-      { phrase: 'I am a programmer' },
-      { phrase: 'I am a ninja warrior' }
+      new Phrase('Hello World'),
+      new Phrase('I am a developer'),
+      new Phrase('I am a ninja'),
+      new Phrase('I am a programmer'),
+      new Phrase('I am a ninja warrior')
     ];
-    this.activePhrase = new Phrase(this.getRandomPhrase());
+    this.activePhrase = this.getRandomPhrase();
   }
 
   /**
@@ -27,7 +26,7 @@ class Game {
    * @return {string} Phrase string chosen to be the current phrase
    */
   getRandomPhrase() {
-    return this.phrases[Math.floor(Math.random() * this.phrases.length)].phrase;
+    return this.phrases[Math.floor(Math.random() * this.phrases.length)];
   }
 
   /**
